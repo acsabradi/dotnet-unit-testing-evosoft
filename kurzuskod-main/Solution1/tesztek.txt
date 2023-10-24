@@ -1,0 +1,16 @@
+-----------------------------
+* CreateInvoice
+     * invoice adatokat
+          * required count
+          * dátum
+              * jó érték - jó formátum
+          * filename
+          * format
+     * nem létező terméknév
+     * stockhandling
+
+ViewModel
+---------
+* Kategóriaváltás, termékfrissítés
+* fájlnév számla
+* gomb aktív count

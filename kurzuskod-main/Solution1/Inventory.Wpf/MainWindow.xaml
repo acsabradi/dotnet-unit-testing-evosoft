@@ -1,0 +1,35 @@
+﻿<Window x:Class="Inventory.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Inventory.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <ListView SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding Categories}"  SelectionMode="Single" Grid.Column="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding CategoryName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView SelectedItem="{Binding SelectedProduct}" ItemsSource="{Binding SelectedCategoryProducts}" SelectionMode="Single" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ProductName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Column="2">
+            <TextBox Text="{Binding RequiredCount, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Create invoice" 
+                    Command="{Binding CreateInvoiceCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
